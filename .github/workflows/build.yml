@@ -25,6 +25,6 @@ jobs:
 
       - name: push docker image
         run: |
-          docker push ${{ vars.DOCKERHUB.USERNAME  }}/web_page:latest
+          docker push ${{ vars.DOCKERHUB.USERNAME }}/web_page:latest
           
         
