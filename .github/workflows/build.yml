@@ -21,7 +21,7 @@ jobs:
       - name: build docker image
         run: |
           docker build \
-            -t ${{ vars.DOCKERHUB.USERNAME }}web_page:latest .
+            -t ${{ vars.DOCKERHUB_USERNAME }}/web_page:latest .
 
       - name: docker images
         run: |
@@ -29,6 +29,6 @@ jobs:
 
       - name: push docker image
         run: |
-          docker push ${{ vars.DOCKERHUB.USERNAME }}web_page:latest
+          docker push ${{ vars.DOCKERHUB_USERNAME }}/web_page:latest
           
         
