@@ -21,10 +21,10 @@ jobs:
       - name: build docker image
         run: |
           docker build \
-            -t ${{ vars.DOCKERHUB.USERNAME }}/web_page .
+            -t ${{ vars.DOCKERHUB.USERNAME }}/web_page:latest .
 
       - name: push docker image
         run: |
-          docker push ${{ vars.DOCKKERHUB.USERNAME  }}/web_page
+          docker push ${{ vars.DOCKKERHUB.USERNAME  }}/web_page:latest
           
         
