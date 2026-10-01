@@ -33,9 +33,9 @@ jobs:
       - name: deploy to ec2 instance
         uses: appleboy/ssh-action@v1.2.5
         with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USERNAME }}
-          key: ${{ secrets.EC2_KEY }}
+          host: ${{ vars.EC2_HOST }}
+          username: ${{ vars.EC2_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
 
           script:
             echo " start deployment "
