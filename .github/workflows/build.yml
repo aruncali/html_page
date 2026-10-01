@@ -56,5 +56,6 @@ jobs:
             
             echo "deployment completed"
             echo "total cicd process completed"
+
           
         
