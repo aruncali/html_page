@@ -51,6 +51,7 @@ jobs:
               -v web_data \
               -p 8000:80 \
               ${{ vars.DOCKERHUB_USERNAME }}/web_page:latest 
+              
 
             docker ps
             
