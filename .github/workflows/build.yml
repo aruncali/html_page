@@ -46,7 +46,7 @@ jobs:
             docker run -d \
               --name portfoli web_page\
               --network web_network \
-              -p 8080:80 \
+              -p 8000:80 \
               -v web_data\
               ${{ vars.DOCKER_USERNAME }}/web_page:latest 
 
