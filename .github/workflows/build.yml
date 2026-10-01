@@ -56,6 +56,7 @@ jobs:
             
             echo "deployment completed"
             echo "total cicd process completed"
+            # chenge the ec2 ip in ec2.username
 
           
         
