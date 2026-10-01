@@ -41,16 +41,16 @@ jobs:
             docker network create web_network || true
             docker volume create web_data || true 
             echo " start deployment "
-            docker pull ${{ vars.DOCKER_USERNAME }}/web_page:latest
+            docker pull ${{ vars.DOCKERHUB_USERNAME }}/web_page:latest
             docker stop web_page || true
             docker rm web_page || true
 
             docker run -d \
-              --name portfolio web_page\
+              --name portfolio_web_page\
               --network web_network \
-              -v web_data:/usr/share/nginx/html \
+              -v web_data \
               -p 8080:80 \
-              ${{ vars.DOCKER_USERNAME }}/web_page:latest 
+              ${{ vars.DOCKERHUB_USERNAME }}/web_page:latest 
 
             docker ps
             
