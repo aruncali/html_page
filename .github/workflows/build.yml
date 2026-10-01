@@ -30,5 +30,29 @@ jobs:
       - name: push docker image
         run: |
           docker push ${{ vars.DOCKERHUB_USERNAME }}/web_page:latest
+      - name: deploy to ec2 instance
+        uses: appleboy/ssh-action@v0.1.5
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_KEY }}
+
+          script:
+            echo " start deployment "
+            docker pull ${{ vars.DOCKER_USERNAME }}/web_page:latest
+            docker stop web_page || true
+            docker rm web_page || true
+
+            docker run -d \
+              --name portfoli web_page\
+              --network web_network \
+              -p 8080:80 \
+              -v web_data\
+              ${{ vars.DOCKER_USERNAME }}/web_page:latest 
+
+            docker ps
+            
+            echo "deployment completed"
+
           
         
