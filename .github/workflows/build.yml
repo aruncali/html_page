@@ -37,22 +37,24 @@ jobs:
           username: ${{ vars.EC2_USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
 
-          script:
+          script: |
+            docker network create web_network || true
+            docker volume create web_data || true 
             echo " start deployment "
             docker pull ${{ vars.DOCKER_USERNAME }}/web_page:latest
             docker stop web_page || true
             docker rm web_page || true
 
             docker run -d \
-              --name portfoli web_page\
+              --name portfolio web_page\
               --network web_network \
-              -p 8000:80 \
-              -v web_data\
+              -v web_data:/usr/share/nginx/html \
+              -p 8080:80 \
               ${{ vars.DOCKER_USERNAME }}/web_page:latest 
 
             docker ps
             
             echo "deployment completed"
-
+            echo "total cicd process completed"
           
         
