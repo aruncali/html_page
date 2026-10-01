@@ -31,7 +31,7 @@ jobs:
         run: |
           docker push ${{ vars.DOCKERHUB_USERNAME }}/web_page:latest
       - name: deploy to ec2 instance
-        uses: appleboy/ssh-action@v0.1.5
+        uses: appleboy/ssh-action@v1.2.5
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
